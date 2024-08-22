@@ -1,0 +1,630 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %} Home | StudySync {% endblock title %}
+{% block content %}
+<script>
+    var count_particles, stats, update;
+    stats = new Stats;
+    stats.setMode(0);
+    stats.domElement.style.position = 'absolute';
+    stats.domElement.style.left = '0px';
+    stats.domElement.style.top = '0px';
+    document.body.appendChild(stats.domElement);
+    count_particles = document.querySelector('.js-count-particles');
+    update = function() {
+      stats.begin();
+      stats.end();
+      if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+        count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+      }
+      requestAnimationFrame(update);
+    };
+    requestAnimationFrame(update);
+  </script>
+  <style>
+    canvas{
+        position: absolute;
+        z-index: -1;
+        top: 0px;
+        width: 100%;
+        height: 120% !important;
+        background:linear-gradient(black, rgba(246,129,33,255)) ;
+    }
+    body{
+        overflow-y: scroll;
+    }
+  </style>
+   <!-- home
+   ================================================== -->
+   <div id="particles-js">
+       <section id="home" data-parallax="scroll" data-natural-width=3000 data-natural-height=2000>
+    
+            <!-- <div class="overlay"></div> -->
+            <div class="home-content">        
+    
+                <div class="row contents">                     
+                    <div class="home-content-left">
+    
+                        <h3 data-aos="fade-up">Welcome to StudySync</h3>
+    
+                        <h1 data-aos="fade-up">
+                            Unlock Academic Excellence <br>
+                             with StudySync's <br>
+                              Powerful Resources.
+                        </h1>
+    
+                        <div class="buttons" data-aos="fade-up">
+                            <a href="#download" class="smoothscroll button stroke">
+                                <span class="icon-circle-down" aria-hidden="true"></span>
+                                Download App
+                            </a>
+                            <a onclick="display()" class="button stroke">
+                                <span class="icon-play" aria-hidden="true"></span>
+                                Watch Video
+                            </a>
+                        </div>                                         
+    
+                    </div>
+    
+                    <div class="home-image-right">
+                        <img src="{% static 'images/iphone-470.png' %}" 
+                            srcset="{% static 'images/iphone-470.png' %} 1x, {% static 'images/iphone-940.png' %} 2x"  
+                            data-aos="fade-up">
+                    </div>
+                </div>
+    
+            </div> <!-- end home-content -->
+            
+            <ul class="home-social-list">
+                <li>
+                    <a href="mailto:teamstudysync@gmail.com" target="_blank"><i class="fa fa-envelope"></i></a>
+                </li>
+                <li>
+                    <a href="https://t.me/+tl3svHo3Ok44MzVl" target="_blank"><i class="fa fa-telegram"></i></a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/teamstudysync/" target="_blank"><i class="fa fa-instagram"></i></a>
+                </li>
+                <!-- <li>
+                    <a href="#"><i class="fa fa-youtube-play"></i></a>
+                </li> -->
+            </ul>
+            <!-- end home-social-list -->
+    
+            <div class="home-scrolldown">
+                <a href="#about" class="scroll-icon smoothscroll">
+                    <span>Scroll Down</span>
+                    <i class="icon-arrow-right" aria-hidden="true"></i>
+                </a>
+            </div>
+    
+        </section> <!-- end home -->  
+    </div>
+
+    <!-- about
+    ================================================== -->
+    <section id="about">
+
+        <div class="row about-intro">
+
+            <div class="col-four">
+                <h1 class="intro-header" data-aos="fade-up">About Our Website</h1>
+            </div>
+            <div class="col-eight">
+                <p class="lead" data-aos="fade-up">
+                    StudySync is a dedicated platform designed to empower students, educators, and enthusiasts with a rich collection of academic resources. Our mission is to make learning engaging, accessible, and effective, offering a diverse range of notes, papers, and tools. Join us on a journey towards knowledge, excellence, and educational success.
+                </p>
+            </div>                       
+            
+        </div>
+
+        <div class="row about-features">
+
+            <div class="features-list block-1-3 block-m-1-2 block-mob-full group">
+
+                <div class="bgrid feature" data-aos="fade-up">	
+
+                    <span class="icon"><i class="icon-window"></i></span>            
+
+                    <div class="service-content">	
+
+                        <h3>Subject Coverage</h3>
+
+                        <p>StudySync offers an extensive range of subjects, from Mathematics to Literature and beyond. Explore in-depth resources for all your academic needs, ensuring you're prepared for any coursework or assignment.
+                        </p>
+                        
+                    </div> 	         	 
+
+                    </div> <!-- /bgrid -->
+
+                    <div class="bgrid feature" data-aos="fade-up">	
+
+                        <span class="icon"><i class="icon-image"></i></span>                          
+
+                    <div class="service-content">	
+                        <h3>Class Assignment (CA) Papers</h3>  
+
+                        <p>Access exclusive Class Assignment papers, a unique feature of StudySync. These papers provide in-depth insights, problem-solving exercises, and advanced learning materials that help you excel in your classes and exams.
+                        </p>
+
+                        
+                    </div>	                          
+
+                </div> <!-- /bgrid -->
+
+                <div class="bgrid feature" data-aos="fade-up">
+
+                    <span class="icon"><i class="icon-paint-brush"></i></span>		            
+
+                    <div class="service-content">
+                        <h3>Interactive Resource Library</h3>
+
+                        <p>Dive into our resource library, brimming with interactive study materials, practice quizzes, and expertly curated notes. This feature ensures you have a variety of resources to enhance your understanding and retention of the subject matter.
+                        </p> 
+                            
+                    </div> 	            	               
+
+                </div> <!-- /bgrid -->
+
+                    <div class="bgrid feature" data-aos="fade-up">
+
+                        <span class="icon"><i class="icon-file"></i></span>	              
+
+                    <div class="service-content">
+                        <h3>Mobile and Web Synchronization</h3>
+
+                        <p>Seamlessly transition between your mobile device and the StudySync website. Access your study materials, notes, and resources on-the-go or from the comfort of your computer, ensuring you have the flexibility to learn whenever and wherever you choose.
+                        </p> 
+                        
+                    </div>                
+
+                    </div> <!-- /bgrid -->
+
+                <div class="bgrid feature" data-aos="fade-up">
+
+                    <span class="icon"><i class="icon-sliders"></i></span>	            
+
+                    <div class="service-content">	
+                        <h3>Offline Download and Study</h3>
+
+                        <p>No internet connection? No problem. Download study materials for offline access, ensuring you can study even when you're off the grid. StudySync is designed to accommodate your learning needs, whether you're online or offline.
+                        </p>                            
+                    </div>	               
+
+                </div> <!-- /bgrid -->
+
+                <div class="bgrid feature" data-aos="fade-up">
+
+                    <span class="icon"><i class="icon-gift"></i></span>	   	           
+
+                    <div class="service-content">
+                        <h3>Free to Use</h3>
+
+                        <p>StudySync is your free ticket to a world of academic resources. Access a vast library of PDFs, reference materials, and a thriving study community without any cost. Empower your education today.
+                        </p> 
+                            
+                    </div>	               
+
+                </div> <!-- /bgrid -->
+
+            </div> <!-- end features-list -->
+
+        </div> <!-- end about-features -->
+
+        <div class="row about-how">
+          
+            <h1 class="intro-header" data-aos="fade-up">How The App Works?</h1>           
+
+            <div class="about-how-content" data-aos="fade-up">
+                <div class="about-how-steps block-1-2 block-tab-full group">
+
+                    <div class="bgrid step" data-item="1">
+                        <h3>Log-in/Sign-Up</h3>
+                        <p>"Unlocking your StudySync account is a breeze! Simply enter your email and password, followed by a secure OTP sent to your email. Verify with the 6-digit code, and voilà - you're back to seamless learning on StudySync!"</p> 
+                    </div>
+
+                    <div class="bgrid step" data-item="2">
+                        <h3>Preview</h3>
+                        <p>"Dive into StudySync, your academic oasis! Access comprehensive notes, exclusive CA papers. With list of courses and ppts for individual course, and more, elevate your learning journey today!"</p> 
+                    </div>               
+               
+                    <div class="bgrid step" data-item="3">
+                        <h3>Download</h3>
+                        <p>"Download StudySync effortlessly: Visit our website or app store, click 'Download,' and follow on-screen prompts. Open the app, sign in, and explore a world of enriching academic resources anytime, anywhere. Your journey to educational excellence begins with a simple download!"</p> 
+                    </div>
+
+                    <div class="bgrid step" data-item="4">
+                        <h3>Upload</h3>
+                        <p>
+                            "Uploading on StudySync is a seamless process. Navigate to the upload section, choose your file, and click 'Submit.' Our platform supports a variety of file formats, ensuring you can effortlessly share and access a diverse range of educational materials with ease."</p> 
+                    </div>  
+
+                </div>           
+           </div> <!-- end about-how-content -->
+
+        </div> <!-- end about-how -->
+        
+    </section> <!-- end about -->  
+   
+
+    <!-- pricing
+    ================================================== -->
+    {% comment %} <section id="pricing">
+        <div class="row pricing-content">
+
+            <div class="col-four pricing-intro">
+                <h1 class="intro-header" data-aos="fade-up">Our Pricing Options</h1>
+
+                <p data-aos="fade-up">At StudySync, we believe in providing you with choices that cater to your academic needs. Our pricing plans are designed to offer you flexibility and options that align with your goals and budget. Whether you're seeking comprehensive CA (Class Assignment) papers or simply need PDFs for your reference, we have a plan for you:</p>
+            </div>
+
+            <div class="col-eight pricing-table">
+                <div class="row">
+
+                    <div class="col-six plan-wrap">
+                        <div class="plan-block" data-aos="fade-up"> 
+
+                            <div class="plan-top-part">
+                                <h3 class="plan-block-title">Free Plan</h3>
+                                <p class="plan-block-price"><sup>&#8377;</sup>0</p>
+                                <p class="plan-block-per">Per Month</p>
+                            </div>
+
+                            <div class="plan-bottom-part">
+                                <ul class="plan-block-features">
+                                    <li><span>&#10024;</span> PDF library</li>
+                                    <li><span>&#10024;</span> Upload files</li>		                  
+                                    <li>&#10024;<span>Default</span>&#10024;</li>		                  
+                                </ul>
+
+                                <a class="button button-primary large" href="">Get Started</a>
+                            </div>  
+                     
+                        </div>
+                    </div> 
+
+                    <div class="col-six plan-wrap">
+                        <div class="plan-block primary" data-aos="fade-up">
+
+                            <div class="plan-top-part">
+                                <h3 class="plan-block-title">Pro Plan</h3>
+                                <p class="plan-block-price"><sup>&#8377;</sup>10</p>
+                                <p class="plan-block-per">Per Month</p>
+                            </div>
+
+                            <div class="plan-bottom-part">
+                                <ul class="plan-block-features">
+                                    <li><span>&#10024;</span> CA papers</li>	                  
+                                    <li><span>&#10024;</span> PDF library</li>
+                                    <li><span>&#10024;</span> Upload files</li>		                  
+                                </ul>
+
+                                <a class="button button-primary large" href="">Get Started</a>
+                            </div>
+
+                        </div>
+                    </div> 
+
+                </div>               
+            </div>
+
+        </div>
+    </section> {% endcomment %}
+
+
+    <!-- download
+    ================================================== -->
+    <section id="download">
+
+        <div class="row">
+            <div class="col-full">
+                <h1 class="intro-header"  data-aos="fade-up">Download Our App Today!</h1>
+
+                <p class="lead" data-aos="fade-up">StudySync is your ultimate companion for academic success. Whether you're a college student or a university enthusiast, this app is designed to help you excel in your studies. With StudySync, you can access a wealth of comprehensive notes and resources on a wide range of subjects right at your fingertips.</p>
+
+                <ul class="download-badges">
+                    <li><a onclick="display()" class="badge-appstore"  data-aos="fade-up">App Store</a></li>
+                    <li><a onclick="display()" class="badge-googleplay" data-aos="fade-up">Play Store</a></li>
+                </ul>
+
+            </div>
+        </div>
+
+    </section> <!-- end download -->    
+
+
+    <!-- footer
+    ================================================== -->
+    <footer id="footer">
+
+        <div class="footer-main">
+            <div class="row">  
+
+                <div class="col-three md-1-3 tab-full footer-info">            
+
+                    <div class="footer-logo"></div>
+
+                    <p>"Unlock your academic potential with StudySync! Dive into a world of knowledge where we provide digital notes tailored for all college students. Elevate your learning experience today and excel with us!"</p>
+
+                    <ul class="footer-social-list">
+                        <!-- <li>
+                            <a href="#"><i class="fa fa-facebook-square"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-behance"></i></a>
+                        </li> -->
+                        <li>
+                            <a href="mailto:teamstudysync@gmail.com"><i class="fa fa-envelope"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/teamstudysync/"><i class="fa fa-instagram"></i></a>
+                        </li>
+                    </ul>
+                    
+                    
+                </div> <!-- end footer-info -->
+
+                <div class="col-three md-1-3 tab-1-2 mob-full footer-contact">
+
+                    <h4>Contact</h4>
+
+                    <p>
+                    LPU, Chiheru<br>
+                    Jalandhar, Punjab <br>
+                    144008<br>		        
+                    </p>
+
+                    <p>
+                    support@studysync.com <br>
+                    Phone-1: (+91) 74139 12366 <br>
+                    Phone-2: (+91) 96968 34539    
+                    </p>                    
+
+                </div> <!-- end footer-contact -->  
+
+                <div class="col-two md-1-3 tab-1-2 mob-full footer-site-links">
+
+                    <h4>Site Links</h4>
+
+                    <ul class="list-links">
+                        <li><a href='home'>Home</a></li>
+                        <li><a href="ppt-page">Courses & Files</a></li>
+                        <li><a href='about-page'>About Us</a></li>
+                        <li><a href='features'>Features</a></li>
+                        <li><a href='report-bug'>Report</a></li>
+                        <!-- <li><a href="#">Blog</a></li> -->
+                        <!-- <li><a href="#">Terms</a></li> -->
+                        <!-- <li><a href="#">Privacy Policy</a></li> -->
+                    </ul>	      		
+                            
+                </div> <!-- end footer-site-links --> 
+
+                <div class="col-four md-1-2 tab-full footer-subscribe">
+
+                    <h4>Our Newsletter</h4>
+
+                    <p>Exciting news from StudySync! We're thrilled to provide college students with comprehensive digital notes. Say goodbye to paper clutter and hello to convenient, accessible, and organized study resources. With StudySync, you'll have all your course notes at your fingertips.</p>
+
+                    <div class="subscribe-form">
+                
+                        <form id="mc-form" class="group" action="{% url 'subscriber' %}" method="POST">
+
+                            <input type="email" value="" name="email" class="email" id="mc-email" placeholder="Email Address" required> 
+                
+                            <button type="button" id="subscriber-submit" href="{% url 'subscriber' %}">Send</button>
+                
+                            <label for="mc-email" class="subscribe-message"></label>
+
+                            <script>
+                                function isEmail(email){
+                                    var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+                                    return email.match(validRegex)
+                                }
+                                const addsubscriberbtn=document.getElementById('subscriber-submit');
+                                addsubscriberbtn.addEventListener('click', async function(){
+                                    const Email=document.getElementById('mc-email').value;
+                                    if(Email.length==0)
+                                        showFailSnackbar("Please fill in email", 'fail');
+                                    else if(!(isEmail(Email))){
+                                        showFailSnackbar("Please enter a valid email","fail");
+                                    }else{
+                                        const res=await fetch('subscriber?q='+Email, {method:'POST', 
+                                            headers: {
+                                            'Accept': 'application/json',
+                                            'Content-Type': 'application/json; charset=UTF-8',
+                                            'X-CSRFToken': getCookie('csrftoken')}}).then(res=>res.json())??[];
+                                        if (res[0].res=="fail"){
+                                            showFailSnackbar(res[0].response, res[0].result);
+                                        }else{
+                                            showSuccessSnackbar(res[0].response,res[0].result);
+                                            document.getElementById('mc-email').value=""
+                                        }
+                                    }
+                                })
+
+                            </script>
+                
+                        </form>
+
+                    </div>	      		
+                            
+                </div> <!-- end footer-subscribe -->         
+
+            </div> <!-- /row -->
+        </div> <!-- end footer-main -->
+
+
+      <div class="footer-bottom">
+
+      	<div class="row">
+
+      		<div class="col-twelve">
+	      		<div class="copyright">
+		         	<span>© Copyright StudySync 2024.</span> 
+		         </div>
+
+		         <div id="go-top">
+		            <a class="smoothscroll" title="Back to Top" href="#top"><i class="icon-arrow-up"></i></a>
+		         </div>         
+	      	</div>
+
+      	</div> <!-- end footer-bottom -->     	
+
+      </div>
+
+    </footer>
+    <!-- snackbar -->
+    <!-- The actual snackbar -->
+    <div id="snackbar">
+        <span id="snackbar-text"></span>
+    </div>
+
+    <!-- popup html -->
+
+    <div class="modal-wrapper">
+        <div class="modal">
+            <div class="modal-close">X</div>
+            <div class="modal-content">
+                <h2 id="headcontent"></h2>
+                <p id="paracontent"></p>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* light theme */
+        #home{
+            background-color: transparent;
+            /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%23D3CC10' stroke-width='1'%3E%3Cpath d='M769 229L1037 260.9M927 880L731 737 520 660 309 538 40 599 295 764 126.5 879.5 40 599-197 493 102 382-31 229 126.5 79.5-69-63'/%3E%3Cpath d='M-31 229L237 261 390 382 603 493 308.5 537.5 101.5 381.5M370 905L295 764'/%3E%3Cpath d='M520 660L578 842 731 737 840 599 603 493 520 660 295 764 309 538 390 382 539 269 769 229 577.5 41.5 370 105 295 -36 126.5 79.5 237 261 102 382 40 599 -69 737 127 880'/%3E%3Cpath d='M520-140L578.5 42.5 731-63M603 493L539 269 237 261 370 105M902 382L539 269M390 382L102 382'/%3E%3Cpath d='M-222 42L126.5 79.5 370 105 539 269 577.5 41.5 927 80 769 229 902 382 603 493 731 737M295-36L577.5 41.5M578 842L295 764M40-201L127 80M102 382L-261 269'/%3E%3C/g%3E%3Cg fill='%23FFFBFB'%3E%3Ccircle cx='769' cy='229' r='5'/%3E%3Ccircle cx='539' cy='269' r='5'/%3E%3Ccircle cx='603' cy='493' r='5'/%3E%3Ccircle cx='731' cy='737' r='5'/%3E%3Ccircle cx='520' cy='660' r='5'/%3E%3Ccircle cx='309' cy='538' r='5'/%3E%3Ccircle cx='295' cy='764' r='5'/%3E%3Ccircle cx='40' cy='599' r='5'/%3E%3Ccircle cx='102' cy='382' r='5'/%3E%3Ccircle cx='127' cy='80' r='5'/%3E%3Ccircle cx='370' cy='105' r='5'/%3E%3Ccircle cx='578' cy='42' r='5'/%3E%3Ccircle cx='237' cy='261' r='5'/%3E%3Ccircle cx='390' cy='382' r='5'/%3E%3C/g%3E%3C/svg%3E"); */
+        }
+        /* black theme */
+        /* #home{
+            background-color: black;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%23D3CC10' stroke-width='1'%3E%3Cpath d='M769 229L1037 260.9M927 880L731 737 520 660 309 538 40 599 295 764 126.5 879.5 40 599-197 493 102 382-31 229 126.5 79.5-69-63'/%3E%3Cpath d='M-31 229L237 261 390 382 603 493 308.5 537.5 101.5 381.5M370 905L295 764'/%3E%3Cpath d='M520 660L578 842 731 737 840 599 603 493 520 660 295 764 309 538 390 382 539 269 769 229 577.5 41.5 370 105 295 -36 126.5 79.5 237 261 102 382 40 599 -69 737 127 880'/%3E%3Cpath d='M520-140L578.5 42.5 731-63M603 493L539 269 237 261 370 105M902 382L539 269M390 382L102 382'/%3E%3Cpath d='M-222 42L126.5 79.5 370 105 539 269 577.5 41.5 927 80 769 229 902 382 603 493 731 737M295-36L577.5 41.5M578 842L295 764M40-201L127 80M102 382L-261 269'/%3E%3C/g%3E%3Cg fill='%black'%3E%3Ccircle cx='769' cy='229' r='5'/%3E%3Ccircle cx='539' cy='269' r='5'/%3E%3Ccircle cx='603' cy='493' r='5'/%3E%3Ccircle cx='731' cy='737' r='5'/%3E%3Ccircle cx='520' cy='660' r='5'/%3E%3Ccircle cx='309' cy='538' r='5'/%3E%3Ccircle cx='295' cy='764' r='5'/%3E%3Ccircle cx='40' cy='599' r='5'/%3E%3Ccircle cx='102' cy='382' r='5'/%3E%3Ccircle cx='127' cy='80' r='5'/%3E%3Ccircle cx='370' cy='105' r='5'/%3E%3Ccircle cx='578' cy='42' r='5'/%3E%3Ccircle cx='237' cy='261' r='5'/%3E%3Ccircle cx='390' cy='382' r='5'/%3E%3C/g%3E%3C/svg%3E");
+        } */
+        .home-image-right{
+            text-align: center;
+        }
+        .home-image-right img{
+            width: 60%;
+        }
+        .row{
+            width: 88%;
+        }
+        .footer-social-list {
+            font-size: 2.5rem;
+            margin-top: 3.5rem;
+            margin-bottom: 3rem;
+        }
+        .footer-subscribe #mc-form input[type="email"] {
+            margin-top: 20px;
+        }
+        .footer-subscribe #mc-form button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            color: #ffffff;
+            background: rgba(246,129,33,255);
+            border-color: rgba(246,129,33,255);
+            border-radius: 0 0.5rem 0.5rem 0;
+            padding: 7px 15px;
+            margin-top: 0px;
+        }
+
+        /* popup css */
+        .modal-wrapper{
+            z-index: 9999;
+            background: rgba(0, 0, 0, 0.508);
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            display: none;
+
+        }
+        .modal{
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            max-width: 300px;
+            width: 100%;
+            background: wheat;
+            padding: 20px;
+            margin: 35vh auto;
+            border-radius: 5px;
+            position: relative;
+        }
+        .modal a{
+            text-decoration: none;
+            background: crimson;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin: 10px;
+        }
+        .modal-close{
+            color: red;
+            border: 1px solid black;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            cursor:pointer;
+            width: 20px;
+            border-radius: 5px;
+        }
+        button{
+            background: crimson;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin: 10px auto;
+            cursor: pointer;
+        }
+        @media screen and (min-width: 320px) and (max-width: 720px){
+            .home-image-right{
+                position: relative;
+                top: -284px;
+            }
+        }
+    </style>
+
+    <script>
+        let modal = document.querySelector('.modal-wrapper');
+        let close_btn = document.querySelector('.modal-close');
+        let headContent=document.getElementById("headcontent");
+        let paraContent=document.getElementById("paracontent");
+
+        function display(content, des){
+            headContent.innerText="App Unavailable"
+            paraContent.innerHTML="App is in progress"
+            modal.style.display = 'block';
+        }
+        function hide(){
+            modal.style.display = 'none';
+        }
+        //  when the user clicks on X button,close the modal
+        close_btn.addEventListener('click',hide);
+
+        // when user clicks anywhere outside the modal, close modal
+        window.addEventListener('click',(event)=>{
+            if(event.target == modal){
+                modal.style.display = 'none';
+            }
+        });
+
+    </script>
+
+    <!-- Java Script
+    ================================================== -->
+    
+    <script src="{% static 'js/plugins.js' %}"></script>
+
+
+    <!-- particles --><!-- scripts -->
+    <script src="{% static 'js/particles.js' %}"></script>
+    <script src="{% static 'js/app.js' %}"></script>
+
+    {% endblock content %}

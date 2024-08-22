@@ -1,0 +1,242 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}StudySync{% endblock %}</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{% static 'images/favicon.png' %}"
+    />
+    <!-- mobile specific metas
+   ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- CSS
+  ================================================== -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/vendor.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+
+    <!-- script
+  ================================================== -->
+    <script src="{% static 'js/modernizr.js' %}"></script>
+    <script src="{% static 'js/main.js' %}" async defer></script>
+    
+
+    <!-- jQuery -->
+    <script src="{% static 'js/jquery-2.1.3.min.js' %}"></script>
+
+    <!-- Snackbar -->
+    <script src="{% static '/js/snackbar.js' %}" async defer></script>
+    <link rel="stylesheet" href="{% static '/css/snackbar.css' %}">
+
+    <!-- favicons
+ ================================================== -->
+    <!-- <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+   <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
+  </head>
+  <body id="top">
+    <header id="header" class="row">
+      <div class="header-logo">
+        <a href="/home">StudySync</a>
+      </div>
+
+      <nav id="header-nav-wrap">
+        <ul class="header-main-nav">
+          {% if not user.is_staff %}
+          <li>
+            <a href="/discuss" title="discuss" class="subnavbtn" id="discuss-btn">Discuss</a>
+          </li>
+          <li>
+            <a href="/compiler" title="practice" class="subnavbtn">Practice</a>
+          </li>
+          {% if user.is_authenticated %}
+          <li >
+            <a href="/ppt-page" title="ppts" class="subnavbtn">PPT</a>
+          </li>
+          <li><a href="/ca-page" title="cas" class="subnavbtn">CA's</a></li>
+          <!-- <li><a class="smoothscroll"  href="" title="cas">Projects</a></li> -->
+          {% endif %}
+          <li>
+            <a class="smoothscroll subnavbtn" href="/home#about" title="about">About</a>
+          </li>
+          <!-- <li>
+            <a class="smoothscroll subnavbtn" href="/home#pricing" title="pricing"
+              >Pricing</a
+            >
+          </li>  -->
+          <!-- <li><a class="smoothscroll"  href="#testimonials" title="testimonials">Testimonials</a></li> -->
+          <li>
+            <a class="smoothscroll subnavbtn" href="/home#download" title="download"
+              >Download</a
+            >
+          </li>
+          <li>
+            <a class="smoothscroll subnavbtn" href="/home#footer" title="footer"
+              >Contact</a
+            >
+          </li>
+          {% endif %}
+          {% if user.is_authenticated %}
+          <li style="padding-top: 16px;">
+            <p id="username" style="display: flex;">
+              <img class="profile-photo" src="{% static 'images/default-user.png' %}" style="height:40px !important;width:40px !important;border-radius: 50%; border: 1px solid white; background: white; cursor: pointer;">
+              <!-- <li class="profile-info" id="profile-info">
+                <ol class="list">
+                </ol>
+              </li> -->
+            </p>
+            <ol class="list" id="profile-info" style="min-width: 150px;">
+              <li><p class="name"></p></li>
+              <li><a href="/profile">Settings</a></li>
+              {% if not user.is_staff %}
+              <li><a href="/report-bug">Report</a></li>
+              {% endif %}
+              <li><a href="/logout">Log out</a></li>
+            </ol>
+          </li>
+        </ul>
+          <script>
+            window.addEventListener('load', async function(){
+              const res=await fetch('/get-user-details', {method:'POST', headers: {'X-CSRFToken': getCookie('csrftoken')}}).then(res=>res.json());
+              // set userdata
+              const namefields=document.getElementsByClassName('name')
+              for(var i=0; i<namefields.length; i++){
+                const name=res[0].firstname+" "+res[0].lastname;
+                namefields[i].innerHTML= name==" "? res[0].username : name;
+              }
+              const image=document.getElementsByClassName('profile-photo');
+              for(var i=0; i<image.length; i++){
+                if(res[0].profilephoto!="null"){ image[i].src= res[0].profilephoto}
+              }
+              // when user clicks anywhere outside the profile info ol, close list
+              const photo=document.getElementById('username') // photo icon
+              const profile_info=document.getElementById('profile-info'); // list
+
+              window.addEventListener('click',(event)=>{
+                console.log("clicked window")
+                if(!profile_info.contains(event.target) && !photo.contains(event.target)){
+                      profile_info.classList.remove('show')
+                  }
+              });
+
+              photo.addEventListener('click', function(){
+                profile_info.classList.add('show')
+              })
+
+            })
+            
+          </script>
+
+        {% else %}
+        <a href="/login" title="sign-up" class="button button-primary cta" style="display: inline-block; margin-top: 17px;"
+          >Sign Up/Login</a
+        >
+        {% endif %}
+        
+      </nav>
+
+      <a class="header-menu-toggle" href="#"><span>Menu</span></a>
+    </header>
+    <!-- /header -->
+    <style>
+      header{
+        top: 0;
+      }
+      body{
+        overflow-y: hidden;
+      }
+      a{
+        font-size: 16px;
+        cursor: pointer;
+      }
+      #header-nav-wrap.show{
+        display: block;
+      }
+      ol{
+        list-style: none;
+        position: absolute;
+        right: 0px;
+        top: 72px;
+        background: black;
+        padding: 10px;
+        text-align: center;
+        max-width: 250px;
+      }
+      .username{
+        cursor: pointer;
+      }
+      .list{
+        display: none;
+      }
+      .list a{
+        color: black;
+        padding: 5px 0px;
+        display: inline-block;
+        width: 100%;
+        font-size: 12px;
+        border-radius: 5px;
+        line-height: 15px !important;
+      }
+      .list a:hover{
+        background-color: darkorange;
+        color: white;
+      }
+      .list p{
+        text-align: center;
+        padding: 2px 0px;
+        border-bottom: 2px solid #b4b3b3;
+      }
+      .header-main-nav li a{
+        color: rgba(255, 255, 255, 0.45);
+      }
+      .header-main-nav li a.selected, .header-main-nav li a:hover{
+        color: darkorange !important;
+      }
+      .list li a:hover{
+        color: black !important;
+      }
+      #profile-info.show{
+        display: block;
+      }
+      #profile-info{
+        border-radius: 5px;
+      }
+      #profile-info li{
+        margin: 0px !important;
+      }
+      .name{
+        margin-bottom: 5px !important;
+      }
+      @media screen and (min-width: 320px) and (max-width:768px) {
+        ol{
+          position: relative;
+          right: -10%;
+          top: -55px;
+        }
+      }
+    </style>
+    <script>
+      window.addEventListener('load', ()=>{
+        // selected on click (nav-items)
+        const subnavs=document.getElementsByClassName('subnavbtn')
+        for(var i=0; i<subnavs.length; i++){
+          const nav=subnavs[i];
+          nav.addEventListener('click', function(event){
+            for(var j=0; j<subnavs.length; j++){
+              const nav=subnavs[j];
+              nav.classList.remove('selected');
+            }
+            event.target.classList.add('selected');
+          })
+        }
+      })
+    </script>
+
+    {% block content %} {% endblock content %}
+  </body>
+</html>
